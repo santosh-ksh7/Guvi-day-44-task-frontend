@@ -34,6 +34,8 @@ function App() {
 
 export default App;
 
+const base_url = "https://password-reset-flow-1.herokuapp.com"
+
 
 function Home(){
   return(
@@ -62,7 +64,7 @@ function ResetForm(){
   const formik= useFormik({
     initialValues: {email:""},
     onSubmit: (values) => {
-      fetch("http://localhost:5000/reset", {
+      fetch(`${base_url}/reset`, {
         method: "POST",
         body: JSON.stringify(values),
         headers: {
@@ -108,7 +110,7 @@ function ResetForm1(){
   const formik= useFormik({
     initialValues: {random_string:""},
     onSubmit: (values) =>{
-      fetch("http://localhost:5000/reset1", {
+      fetch(`${base_url}/reset1`, {
         method: "POST",
         body: JSON.stringify(values),
         headers:{
@@ -167,7 +169,7 @@ function ResetForm2(){
   const formik= useFormik({
     initialValues: {password1:"", password2:""},
     onSubmit: (values) =>{
-      fetch("http://localhost:5000/reset2", {
+      fetch(`${base_url}/reset2`, {
         method: "POST",
         body: JSON.stringify({...values, random_string}),
         headers:{
@@ -242,7 +244,7 @@ function RegisterForm(){
     initialValues: {email:"", password:""},
     onSubmit: (values) => {
       try{
-        fetch("http://localhost:5000/register", {
+        fetch(`${base_url}/register`, {
           method: "POST",
           body: JSON.stringify(values),
           headers: {
@@ -310,7 +312,7 @@ function LoginForm(){
     initialValues: {email:"", password:""},
     validationSchema: formschema,
     onSubmit: (values) => {
-      fetch("http://localhost:5000/login",{
+      fetch(`${base_url}/login`,{
         method:"POST",
         body: JSON.stringify(values),
         headers: {
